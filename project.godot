@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="geme_devbandeira"
+run/main_scene="res://scenes/player/mask_dude.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 
