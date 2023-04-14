@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6ycu1a5fp0bq"]
+[gd_scene load_steps=6 format=3 uid="uid://b6ycu1a5fp0bq"]
 
 [ext_resource type="Texture2D" uid="uid://425ort158ny0" path="res://assets/Terrain/Terrain (16x16).png" id="1_jf81s"]
 [ext_resource type="PackedScene" uid="uid://djgumwdlbkhxh" path="res://scenes/player/mask_dude.tscn" id="1_w7tgx"]
+[ext_resource type="PackedScene" uid="uid://ciyclmrtd74dh" path="res://scenes/env/background.tscn" id="3_yhuew"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bx4t6"]
 texture = ExtResource("1_jf81s")
@@ -548,3 +549,5 @@ layer_0/tile_data = PackedInt32Array(1769533, 131072, 2, 1703997, 131072, 1, 163
 [node name="MaskDude" parent="." instance=ExtResource("1_w7tgx")]
 position = Vector2(219, 249)
 metadata/_edit_lock_ = true
+
+[node name="Background" parent="." instance=ExtResource("3_yhuew")]
