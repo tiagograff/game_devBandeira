@@ -15,6 +15,10 @@ run/main_scene="res://scenes/player/mask_dude.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+trasition_sreen="*res://scenes/management/trasition_sreen.tscn"
+
 [display]
 
 window/stretch/mode="canvas_items"

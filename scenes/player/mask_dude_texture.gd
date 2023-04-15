@@ -3,6 +3,7 @@ extends Sprite2D
 var on_action: bool = false
 
 @export var animation: AnimationPlayer = null
+@export var mask_dude: CharacterBody2D = null
 
 func animate(velocity: Vector2) -> void:
 	change_orientation_based_on_direction(velocity.x)
@@ -39,3 +40,10 @@ func horizontal_move_behavior(direction: float) -> void:
 
 func on_animation_finished(_anim_name: String):
 	on_action = false
+	
+	if _anim_name == "hit":
+		mask_dude.on_knockback = false
+		
+	if _anim_name == "dead":
+		hide()
+		trasition_sreen.fade_in()
