@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://djgumwdlbkhxh"]
+[gd_scene load_steps=21 format=3 uid="uid://djgumwdlbkhxh"]
 
 [ext_resource type="Script" path="res://scripts/player/mask_dude.gd" id="1_wbxsa"]
 [ext_resource type="Texture2D" uid="uid://dp5yri6x7plak" path="res://assets/Main Characters/Mask Dude/Idle (32x32).png" id="2_hk3a1"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://0yyaji8ec1q0" path="res://assets/Main Characters/Desappearing (96x96).png" id="9_xe0lh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d83nf"]
-size = Vector2(21, 25)
+size = Vector2(21, 27)
 
 [sub_resource type="Animation" id="Animation_r8r2s"]
 length = 0.001
@@ -384,11 +384,14 @@ _data = {
 "run": SubResource("Animation_7omxm")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eq0f1"]
+size = Vector2(21, 2)
+
 [node name="MaskDude" type="CharacterBody2D" groups=["mask_dude"]]
 script = ExtResource("1_wbxsa")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 1.5)
+position = Vector2(0.5, 2.5)
 shape = SubResource("RectangleShape2D_d83nf")
 
 [node name="Texture" type="Sprite2D" parent="." node_paths=PackedStringArray("animation", "mask_dude")]
@@ -408,4 +411,13 @@ libraries = {
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
+[node name="StompArea" type="Area2D" parent="." groups=["stomp_area"]]
+
+[node name="Collision" type="CollisionShape2D" parent="StompArea"]
+position = Vector2(0.5, 18)
+shape = SubResource("RectangleShape2D_eq0f1")
+disabled = true
+
 [connection signal="animation_finished" from="Animation" to="Texture" method="on_animation_finished"]
+[connection signal="area_entered" from="StompArea" to="." method="on_stomp_area_entered"]
+[connection signal="body_entered" from="StompArea" to="." method="on_stomp_body_entered"]
