@@ -558,5 +558,11 @@ position = Vector2(218, 256)
 
 [node name="Trap" type="Node2D" parent="."]
 
+[node name="Fire2" parent="Trap" instance=ExtResource("4_uvh7r")]
+position = Vector2(505, 256)
+
 [node name="Fire" parent="Trap" instance=ExtResource("4_uvh7r")]
-position = Vector2(488, 256)
+position = Vector2(489, 256)
+
+[node name="Fire3" parent="Trap" instance=ExtResource("4_uvh7r")]
+position = Vector2(521, 256)

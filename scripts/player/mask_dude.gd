@@ -74,7 +74,7 @@ func update_health(target_position: Vector2, value: int, type: String) -> void:
 		sprite.action_behavior("dead")
 	return
 
-func on_stomp_area_entered(area):
+func on_stomp_area_entered(_area):
 	pass
 	
 func on_stomp_body_entered(body):
