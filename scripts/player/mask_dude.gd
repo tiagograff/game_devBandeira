@@ -10,6 +10,7 @@ var on_knockback: bool = false
 var knockback_direction: Vector2
 var health: float = 25.0
 var max_health: float = 0.0
+var total_score: int = 0.0
 
 @export var move_speed: float = 96.0
 @export var jump_speed: float = -192.0
@@ -67,12 +68,19 @@ func update_health(target_position: Vector2, value: int, type: String) -> void:
 		sprite.action_behavior("hit")
 		on_knockback = true
 		health = clamp(health - value,0,max_health)
-	if type == "increase":
-		health = clamp(health + value, 0, max_health)
+		trasition_sreen.current_health = health
+		get_tree().call_group("interface", "update_health",health)
+	
 	if health == 0:
 		is_dead = true
+		trasition_sreen.reset()
 		sprite.action_behavior("dead")
 	return
+	
+	if type == "increase":
+		health = clamp(health + value, 0, max_health)
+		trasition_sreen.current_health = health
+		get_tree().call_group("interface", "update_health",health)
 
 func on_stomp_area_entered(_area):
 	pass
@@ -84,3 +92,8 @@ func on_stomp_body_entered(body):
 		knockback_direction = (global_position - body.global_position).normalized()
 		sprite.action_behavior("hit")
 		on_knockback = true
+
+func update_score(score: int) -> void:
+	total_score += score
+	trasition_sreen.current_score = total_score
+	get_tree().call_group("interface", "update_score",total_score)
